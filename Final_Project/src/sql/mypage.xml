@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Mypage">
+	<select id="getList_order" parameterType="string" resultType="mypage.MyOrderVO">
+		SELECT p.PRODUCT_ID,p.PRODUCT_NAME ,od.OD_QUANTITY , o.ORDER_DATE ,o.ORDER_ID ,(od.OD_QUANTITY*p.PRODUCT_PRICE) as totalprice
+		FROM PRODUCTS p INNER JOIN ORDERS_DETAIL od 
+		ON p.PRODUCT_ID = od.PRODUCT_ID 
+		INNER JOIN ORDERS o 
+		ON o.ORDER_ID = od.ORDER_ID 
+		WHERE user_id = #{user_id}
+	</select>
+	
+	<select id="getList_cart" parameterType="string" resultType="mypage.MyCartVO">
+		SELECT p.PRODUCT_ID,p.PRODUCT_NAME, p.PRODUCT_PRICE ,c.CART_QUANTITY , (p.PRODUCT_PRICE*c.CART_QUANTITY) as totalprice , c.cart_id
+		FROM CART c INNER JOIN  PRODUCTS p  ON p.PRODUCT_ID = c.PRODUCT_ID 
+		WHERE USER_ID =  #{user_id}
+	</select>
+	
+	
+	<select id="getList_product_q" parameterType="string" resultType="mypage.MyProduct_qVO">
+		SELECT pq.QUESTION_ID,p.PRODUCT_NAME , pq.QUESTION_TITLE ,pq.QUESTION_DATE ,pq.REPLYSTATE ,pr.MANAGER_ID,pr.TITLE,pr.CONTENTS
+		FROM PRODUCTS_Q pq INNER JOIN PRODUCTS p ON pq.PRODUCT_ID = p.PRODUCT_ID 
+		LEFT JOIN pq_reply pr ON pq.QUESTION_ID = pr.QUESTION_ID
+		WHERE USER_ID = #{user_id}
+	</select>
+	
+	<insert id="cartToOrder" parameterType="_int">
+	INSERT INTO orders VALUES
+	(order_seq.nextval,sysdate,'default','default',
+	(SELECT p.PRODUCT_PRICE FROM CART c INNER JOIN PRODUCTS p ON c.PRODUCT_ID = p.PRODUCT_ID WHERE CART_ID = #{cart_id})*
+	(SELECT CART_QUANTITY FROM CART c WHERE CART_id = #{cart_id}),
+	(SELECT user_id FROM CART c WHERE CART_ID = #{cart_id}),1)
+	</insert>
+	
+	<insert id="cartToOd" parameterType="_int">
+		INSERT INTO ORDERS_DETAIL VALUES(od_seq.nextval,order_seq.currval,(SELECT PRODUCT_ID FROM CART c WHERE CART_ID = #{cart_id}),(SELECT CART_QUANTITY FROM CART c WHERE CART_ID = #{cart_id}))
+	</insert>
+	
+	<delete id="deleteCart" parameterType="_int">
+		DELETE FROM CART WHERE CART_ID = #{cart_id}
+	</delete>
+</mapper>

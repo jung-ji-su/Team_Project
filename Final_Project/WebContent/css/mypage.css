@@ -1,0 +1,94 @@
+@charset "UTF-8";
+
+
+.mypage-container{
+	width: 100%;
+	height : 100%;
+	display: flex;
+    justify-content: center;
+   
+}
+
+.mypage-div{
+	width: 1000px;
+	height : 100%;
+}
+
+.left-nav{
+	width : 300px;
+	height : 300px;
+	position: fixed;
+	margin-top : 100px;
+	padding-left: 40px;
+}
+
+.mypage-title-top{
+	margin-top : 150px;
+}
+
+.mypage-title{
+	margin-top : 30px;
+}
+
+.mypage-info-tb{
+	width : 100%;
+	
+}
+
+.mypage-info-tb td{
+	text-align: center;
+	
+}
+
+.mypage-info-td{
+	padding-top: 20px;
+}
+
+.mypage-tb{
+	width : 100%;
+	color : black;
+	text-align: center;
+}
+
+.mypage-tb th,td{
+	border-bottom: 1px solid black; 
+	border-top: 1px solid black; 
+	padding: 20px;
+}
+
+li{
+	list-style: none;
+	color : black;
+	margin: 20px;
+}
+
+.btn1-mypage{
+	width : 70%;
+	height : 50px;
+	margin-left : 160px;
+	margin-top : 30px;	
+  align-items: center;
+  background-color: initial;
+  background-image: linear-gradient(#464d55, #25292e);
+  border-radius: 8px;
+  border-width: 0;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, .1),0 3px 6px rgba(0, 0, 0, .05);
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  display: inline-flex;
+  flex-direction: column;
+  font-family: expo-brand-demi,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+  font-size: 18px;
+  justify-content: center;
+  line-height: 1;
+  outline: none;
+  overflow: hidden;
+  padding: 0 32px;
+  text-align: center;
+  text-decoration: none;
+  transform: translate3d(0, 0, 0);
+  transition: all 150ms;
+  vertical-align: baseline;
+  white-space: nowrap;
+}

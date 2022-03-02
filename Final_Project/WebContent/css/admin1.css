@@ -1,0 +1,129 @@
+
+.Box{
+    text-align : center;
+}
+
+.Box_2{
+    text-align : left;
+}
+
+
+.thd, .thd_1{
+    border-bottom : 1px solid lightgray;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+.thd{
+    color : black;
+}
+
+
+.button{
+    display: inline-block;
+}
+
+.btn{
+    text-decoration: none;
+    font-size : 16px;
+    color : black;
+    padding : 5px 80px 5px 80px;
+    display : inline-block;
+    background-color :rgb(158, 165, 165);
+    border-radius : 10px;
+}
+
+.btn_2{
+    text-decoration: none;
+    font-size : 12px;
+    color : black;
+    padding : 5px 20px 5px 20px;
+    display: incline-block;
+    background-color :rgb(158, 165, 165);
+    border-radius : 10px;
+}
+
+
+
+
+.search{
+    text-decoration: none;
+    font-size : 16px;
+    color : white;
+    padding : 5px 30px 5px 30px;
+    display : inline-block;
+    background-color :rgb(83, 128, 196);
+    border-radius : 10px;
+
+}
+
+
+
+table{
+    width : 784.88px;
+    border-collapse: collapse;
+    height : 100px;
+    margin-left: auto;
+    margin-right: auto;
+    table-layout: fixed;
+}
+
+table, td{
+    border-collapse: collapse;
+    border : 1px;
+}
+
+td{
+    text-align : left;
+    padding: 5px;
+    border : 1px solid rgb(192, 192, 192);
+}
+
+.tdcol{
+    width : 192px;
+    background-color: rgb(201, 201, 201);
+}
+
+.check{
+    display: inline-block;
+}
+
+.table2{
+    width : 1400px;
+    border-collapse:collapse;;
+}
+
+.btn2{
+    text-align: left;
+}
+
+th, .td2{
+    border-bottom : 1px solid lightgray;
+    text-align: center;
+    padding: 13px;
+    font-size: 11px;
+    border-left : 0px;
+    border-top : 0px;
+    border-right : 0px;
+
+} 
+
+th{
+    background-color: gray;
+    color: #fff;
+}
+
+table caption{
+    text-align: right;
+    margin-bottom: 10px;
+}
+
+.td_2{
+    width : 5%;
+}
+
+.td_3{
+    width : 50%;
+}
+
+

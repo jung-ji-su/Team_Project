@@ -1,0 +1,257 @@
+
+.footer-info-left-title{
+	font-weight: bold;
+}
+
+.footer-info-left-contents{
+	font-size : 0.9rem;
+}
+
+.footer-info-mid{
+	margin-top :50px;
+	width:450px; 
+	height:300px;
+	border-right: 1px solid gray;	
+}
+.footer-info-right{
+	margin-top :50px;
+	width:450px; 
+	height:300px;
+}
+
+.footer-info-mid-title, .footer-info-right-title{
+	font-weight: bold;
+}
+
+.footer-info-mid-contents{
+	font-size : 0.9rem;
+}
+
+.footer-info-right-list{
+	list-style:none;
+    padding-left:0px;
+    font-size: 0.9rem;
+}
+
+.login-container{
+	width: 100%;
+	height : 100%;
+	display: flex;
+    justify-content: center;
+   
+}
+
+.login-div{
+	margin-top : 91.5px;
+	margin-bottom : 20px;
+	width: 500px;
+	height : 100%;
+	border :1px solid rgba(0,0,0,0.3);
+	border-radius: 10px;
+	box-shadow: 0.5px 0.5px 0.5px 0.5px;
+}
+
+.login-logo{
+	margin-top: 100px;
+	margin-bottom : 50px;
+	text-align: center;
+}
+
+#joinb{
+	margin-top : 10px;
+}
+#joinc{
+	margin-bottom: 100px;
+}
+#joind{
+	margin-bottom: 10px;
+}
+.msg-pwcheck{
+	height : 28px;
+	color:red;
+}
+.login-input{
+	width : 300px;
+	height : 50px;
+	padding-top : 10px;
+	padding-bottom : 10px;
+	border-top : none;
+	border-left : none;
+	border-right : none;
+	border-bottom : 3px solid black;
+}
+
+.join-phoneNum{
+	width : 50px;
+	height : 50px;
+	margin-left : 20px;
+	padding-top : 10px;
+	padding-bottom : 10px;
+	border-top : none;
+	border-left : none;
+	border-right : none;
+	border-bottom : 3px solid black;
+}
+.join-phoneNum-FP{
+	width : 83px;
+	height : 50px;
+	margin-left : 20px;
+	padding-top : 10px;
+	padding-bottom : 10px;
+	border-top : none;
+	border-left : none;
+	border-right : none;
+	border-bottom : 3px solid black;
+}
+.phoneSelect{
+	width : 50px;
+	height : 50px;
+	padding-top : 10px;
+	padding-bottom : 10px;
+	border-top : none;
+	border-left : none;
+	border-right : none;
+	border-bottom : 3px solid black;
+}
+.phoneSelect-FP{
+	width : 70px;
+	height : 50px;
+	padding-top : 10px;
+	padding-bottom : 10px;
+	border-top : none;
+	border-left : none;
+	border-right : none;
+	border-bottom : 3px solid black;
+}
+
+.login-text{
+	margin-left : 100px;
+	margin-bottom: 50px;
+}
+
+.login-p{
+	color : black;
+	font-weight: bold;
+}
+/*
+.login-submit, .join-submit, .find-submit{
+	width : 300px;
+	height : 50px;
+	margin-left : 100px;
+	background-color: gray;
+}
+*/
+
+
+.login-a{
+	margin-top  : 20px;
+	margin-left : 100px;
+	margin-bottom: 30px;
+}
+
+.login-a-id{
+	margin-left : 40px;
+	color: black;
+}
+.login-a-pw{
+	margin-left : 40px;
+	color: black;
+}
+
+
+
+/* CSS */
+.login-submit, .join-submit, .find-submit {
+	width : 300px;
+	height : 50px;
+	margin-left : 100px;
+  align-items: center;
+  background-color: initial;
+  background-image: linear-gradient(#464d55, #25292e);
+  border-radius: 8px;
+  border-width: 0;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, .1),0 3px 6px rgba(0, 0, 0, .05);
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  display: inline-flex;
+  flex-direction: column;
+  font-family: expo-brand-demi,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+  font-size: 18px;
+  justify-content: center;
+  line-height: 1;
+  outline: none;
+  overflow: hidden;
+  padding: 0 32px;
+  text-align: center;
+  text-decoration: none;
+  transform: translate3d(0, 0, 0);
+  transition: all 150ms;
+  vertical-align: baseline;
+  white-space: nowrap;
+}
+
+#phonecheck,#idcheck{
+	margin-left : 10px;
+	font-size : 1rem;
+	width : 75px;
+	height : 40px;
+}
+.login-submit:hover, .join-submit:hover, .find-submit:hover {
+  box-shadow: rgba(0, 1, 0, .2) 0 2px 8px;
+  opacity: .85;
+}
+
+.login-submit:active, .join-submit:active, .find-submit:active {
+  outline: 0;
+}
+
+
+@media (max-width: 420px) {
+  .login-submit, .join-submit, .find-submit {
+    height: 48px;
+  }
+}
+
+.review_header , .pq_header{
+	text-align: center;
+	color : black;
+	margin-top: 10px;
+}
+
+.row-review{
+	border-top: 1px solid gray;
+}
+
+a#back-to-top {
+    position: fixed;
+    bottom: 3em;
+    right: 3em;
+    background-color: rgba(255, 255, 255, .9);
+    color: #313943;
+    border: none;
+    border-radius: 5px;
+    padding: 1em;
+    text-transform: uppercase;
+    cursor: pointer;
+    font-weight: 700;
+    box-shadow: 0 0 2em 0 rgba(0, 0, 0, .25);
+    transition: all .3s ease-in-out;
+    display: inline-block;
+    opacity: 0;
+    text-decoration: none;
+    font-size: .75em;
+}
+
+a#back-to-top:hover {
+    background-color: #fff;
+    padding: 1em 3em;
+}
+
+a#back-to-top.visible {
+    opacity: 1;
+}
+
+.contents-tr{
+	display: none;
+}

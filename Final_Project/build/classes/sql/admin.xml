@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Admin">
+	<select id="getOrderById1" parameterType="hashmap" resultType="admin.OrderResultVO">
+	SELECT  o.ORDER_DATE ,o.ORDER_ID , u.USER_ID ,p.PRODUCT_NAME ,od.OD_QUANTITY ,o.ORDER_TOTALPRICE 
+	FROM ORDERS o
+	INNER JOIN ORDERS_DETAIL od 
+	ON  o.ORDER_ID = od.ORDER_ID 
+	INNER JOIN PRODUCTS p 
+	ON od.PRODUCT_ID = p.PRODUCT_ID 
+	INNER JOIN USERS u 
+	ON o.USER_ID = u.USER_ID
+	WHERE o.ORDER_ID = #{order_id}
+	AND o.ORDER_DATE 
+	BETWEEN TO_DATE(#{mindate}, 'YYYY-MM-DD') 
+    AND TO_DATE(#{maxdate}, 'YYYY-MM-DD')
+    AND  p.PRODUCT_NAME LIKE '%' || #{productValue} || '%'
+    ORDER BY o.ORDER_DATE desc 
+	</select>
+	
+	<select id="getOrderById2" parameterType="hashmap" resultType="admin.OrderResultVO">
+	SELECT  o.ORDER_DATE ,o.ORDER_ID , u.USER_ID ,p.PRODUCT_NAME ,od.OD_QUANTITY ,o.ORDER_TOTALPRICE 
+	FROM ORDERS o
+	INNER JOIN ORDERS_DETAIL od 
+	ON  o.ORDER_ID = od.ORDER_ID 
+	INNER JOIN PRODUCTS p 
+	ON od.PRODUCT_ID = p.PRODUCT_ID 
+	INNER JOIN USERS u 
+	ON o.USER_ID = u.USER_ID
+	WHERE o.ORDER_ID = #{order_id}
+	AND o.ORDER_DATE 
+	BETWEEN TO_DATE(#{mindate}, 'YYYY-MM-DD') 
+    AND TO_DATE(#{maxdate}, 'YYYY-MM-DD')
+    AND  p.PRODUCT_ID = #{productValue}
+    ORDER BY o.ORDER_DATE desc 
+	</select>
+	
+	<select id="getOrderByUserName1" parameterType="hashmap" resultType="admin.OrderResultVO">
+	SELECT  o.ORDER_DATE ,o.ORDER_ID , u.USER_ID ,p.PRODUCT_NAME ,od.OD_QUANTITY ,o.ORDER_TOTALPRICE 
+	FROM ORDERS o
+	INNER JOIN ORDERS_DETAIL od 
+	ON  o.ORDER_ID = od.ORDER_ID 
+	INNER JOIN PRODUCTS p 
+	ON od.PRODUCT_ID = p.PRODUCT_ID 
+	INNER JOIN USERS u 
+	ON o.USER_ID = u.USER_ID
+	WHERE u.USER_NAME = #{user_name}
+	AND o.ORDER_DATE
+	BETWEEN TO_DATE(#{mindate}, 'YYYY-MM-DD') 
+    AND TO_DATE(#{maxdate}, 'YYYY-MM-DD')
+    AND  p.PRODUCT_NAME LIKE '%' || #{productValue} || '%'
+    ORDER BY o.ORDER_DATE desc 
+	</select>
+	
+	<select id="getOrderByUserName2" parameterType="hashmap" resultType="admin.OrderResultVO">
+	SELECT  o.ORDER_DATE ,o.ORDER_ID , u.USER_ID ,p.PRODUCT_NAME ,od.OD_QUANTITY ,o.ORDER_TOTALPRICE 
+	FROM ORDERS o
+	INNER JOIN ORDERS_DETAIL od 
+	ON  o.ORDER_ID = od.ORDER_ID 
+	INNER JOIN PRODUCTS p 
+	ON od.PRODUCT_ID = p.PRODUCT_ID 
+	INNER JOIN USERS u 
+	ON o.USER_ID = u.USER_ID
+	WHERE u.USER_NAME = #{user_name}
+	AND o.ORDER_DATE
+	BETWEEN TO_DATE(#{mindate}, 'YYYY-MM-DD') 
+    AND TO_DATE(#{maxdate}, 'YYYY-MM-DD')
+    AND  p.PRODUCT_ID = #{productValue}
+    ORDER BY o.ORDER_DATE desc 
+	</select>
+	
+	<select id="getOrderByUserId1" parameterType="hashmap" resultType="admin.OrderResultVO">
+	SELECT  o.ORDER_DATE ,o.ORDER_ID , u.USER_ID ,p.PRODUCT_NAME ,od.OD_QUANTITY ,o.ORDER_TOTALPRICE 
+	FROM ORDERS o
+	INNER JOIN ORDERS_DETAIL od 
+	ON  o.ORDER_ID = od.ORDER_ID 
+	INNER JOIN PRODUCTS p 
+	ON od.PRODUCT_ID = p.PRODUCT_ID 
+	INNER JOIN USERS u 
+	ON o.USER_ID = u.USER_ID
+	WHERE u.USER_ID = #{user_id}
+	AND o.ORDER_DATE
+	BETWEEN TO_DATE(#{mindate}, 'YYYY-MM-DD') 
+    AND TO_DATE(#{maxdate}, 'YYYY-MM-DD')
+    AND  p.PRODUCT_NAME LIKE '%' || #{productValue} || '%'
+    ORDER BY o.ORDER_DATE desc 
+	</select>
+	
+	<select id="getOrderByUserId2" parameterType="hashmap" resultType="admin.OrderResultVO">
+	SELECT  o.ORDER_DATE ,o.ORDER_ID , u.USER_ID ,p.PRODUCT_NAME ,od.OD_QUANTITY ,o.ORDER_TOTALPRICE 
+	FROM ORDERS o
+	INNER JOIN ORDERS_DETAIL od 
+	ON  o.ORDER_ID = od.ORDER_ID 
+	INNER JOIN PRODUCTS p 
+	ON od.PRODUCT_ID = p.PRODUCT_ID 
+	INNER JOIN USERS u 
+	ON o.USER_ID = u.USER_ID
+	WHERE u.USER_ID = #{user_id}
+	AND o.ORDER_DATE
+	BETWEEN TO_DATE(#{mindate}, 'YYYY-MM-DD') 
+    AND TO_DATE(#{maxdate}, 'YYYY-MM-DD')
+    AND  p.PRODUCT_ID LIKE '%' || #{productValue} || '%'
+    ORDER BY o.ORDER_DATE desc 
+	</select>
+	
+	<select id="getPQPost1" resultType="admin.PostResultVO" parameterType="hashmap">
+		SELECT QUESTION_TITLE title,USER_ID,QUESTION_CONTENT contents,QUESTION_ID id ,REPLYSTATE FROM PRODUCTS_Q pq
+		WHERE QUESTION_DATE BETWEEN TO_DATE(#{mindate}, 'YYYY-MM-DD') 
+        		   AND TO_DATE(#{maxdate}, 'YYYY-MM-DD')
+        AND  QUESTION_TITLE LIKE '%'|| #{searchValue} || '%'
+        AND  REPLYSTATE = '처리중'
+	</select>
+	<select id="getPQPost2" resultType="admin.PostResultVO" parameterType="hashmap">
+		SELECT QUESTION_TITLE title,USER_ID,QUESTION_CONTENT contents,QUESTION_ID id,REPLYSTATE FROM PRODUCTS_Q pq
+		WHERE QUESTION_DATE BETWEEN TO_DATE(#{mindate}, 'YYYY-MM-DD') 
+        		   AND TO_DATE(#{maxdate}, 'YYYY-MM-DD')
+     	AND  USER_ID '%'|| #{searchValue} || '%'
+     	AND  REPLYSTATE = '처리중'
+	</select>
+	<select id="getPQPost3" resultType="admin.PostResultVO" parameterType="hashmap">
+		SELECT QUESTION_TITLE title,USER_ID,QUESTION_CONTENT contents,QUESTION_ID id ,REPLYSTATE FROM PRODUCTS_Q pq
+		WHERE QUESTION_DATE BETWEEN TO_DATE(#{mindate}, 'YYYY-MM-DD') 
+        		   AND TO_DATE(#{maxdate}, 'YYYY-MM-DD')
+        AND  QUESTION_CONTENT '%'|| #{searchValue} || '%'
+        AND  REPLYSTATE = '처리중'
+	</select>
+	
+	<select id="getNoticePost1" resultType="admin.PostResultVO" parameterType="hashmap">
+		SELECT TITLE ,MANAGER_ID user_id,CONTENT contents,NOTICE_ID id FROM NOTICE n
+		WHERE REGDATE BETWEEN TO_DATE(#{mindate}, 'YYYY-MM-DD') 
+                   AND TO_DATE(#{maxdate}, 'YYYY-MM-DD')
+        AND  TITLE LIKE '%'|| #{searchValue} || '%'
+	</select>
+	<select id="getNoticePost2" resultType="admin.PostResultVO" parameterType="hashmap">
+		SELECT TITLE ,MANAGER_ID user_id,CONTENT contents,NOTICE_ID id FROM NOTICE n
+		WHERE REGDATE BETWEEN TO_DATE(#{mindate}, 'YYYY-MM-DD') 
+                   AND TO_DATE(#{maxdate}, 'YYYY-MM-DD')
+        AND  MANAGER_ID '%'|| #{searchValue} || '%'
+	</select>
+	<select id="getNoticePost3" resultType="admin.PostResultVO" parameterType="hashmap">
+		SELECT TITLE ,MANAGER_ID user_id,CONTENT contents,NOTICE_ID id FROM NOTICE n
+		WHERE REGDATE BETWEEN TO_DATE(#{mindate}, 'YYYY-MM-DD') 
+                   AND TO_DATE(#{maxdate}, 'YYYY-MM-DD')
+        AND  CONTENT '%'|| #{searchValue} || '%'
+	</select>
+	
+	<select id="getReviewPost1" resultType="admin.PostResultVO" parameterType="hashmap">
+		SELECT TITLE ,USER_ID , CONTENT contents ,REVIEW_ID id FROM REVIEWS r
+		WHERE REVIEW_DATE BETWEEN TO_DATE(#{mindate}, 'YYYY-MM-DD') 
+                   AND TO_DATE(#{maxdate}, 'YYYY-MM-DD')
+        AND  TITLE LIKE '%'|| #{searchValue} || '%'
+	</select>
+	<select id="getReviewPost2" resultType="admin.PostResultVO" parameterType="hashmap">
+		SELECT TITLE ,USER_ID , CONTENT contents ,REVIEW_ID id FROM REVIEWS r
+		WHERE REVIEW_DATE BETWEEN TO_DATE(#{mindate}, 'YYYY-MM-DD') 
+                   AND TO_DATE(#{maxdate}, 'YYYY-MM-DD')
+        AND  USER_ID LIKE '%'|| #{searchValue} || '%'
+	</select>
+	<select id="getReviewPost3" resultType="admin.PostResultVO" parameterType="hashmap">
+		SELECT TITLE ,USER_ID , CONTENT contents ,REVIEW_ID id FROM REVIEWS r
+		WHERE REVIEW_DATE BETWEEN TO_DATE(#{mindate}, 'YYYY-MM-DD') 
+                   AND TO_DATE(#{maxdate}, 'YYYY-MM-DD')
+        AND  CONTENT LIKE '%'|| #{searchValue} || '%'
+	</select>
+	
+	<select id="getQnAPost1" resultType="admin.PostResultVO" parameterType="hashmap">
+		SELECT QNA_TITLE title,USER_ID ,QNA_CONTENT contents ,QNA_ID id ,REPLYSTATE FROM QNA q
+		WHERE QNA_DATE BETWEEN TO_DATE(#{mindate}, 'YYYY-MM-DD') 
+                   AND TO_DATE(#{maxdate}, 'YYYY-MM-DD')
+        AND  QNA_TITLE LIKE '%'|| #{searchValue} || '%'
+        AND  REPLYSTATE = '처리중'
+	</select>
+	<select id="getQnAPost2" resultType="admin.PostResultVO" parameterType="hashmap">
+		SELECT QNA_TITLE title,USER_ID ,QNA_CONTENT contents ,QNA_ID id ,REPLYSTATE FROM QNA q
+		WHERE QNA_DATE BETWEEN TO_DATE(#{mindate}, 'YYYY-MM-DD') 
+                   AND TO_DATE(#{maxdate}, 'YYYY-MM-DD')
+        AND  USER_ID LIKE '%'|| #{searchValue} || '%'
+        AND  REPLYSTATE = '처리중'
+	</select>
+	<select id="getQnAPost3" resultType="admin.PostResultVO" parameterType="hashmap">
+		SELECT QNA_TITLE title,USER_ID ,QNA_CONTENT contents ,QNA_ID id  ,REPLYSTATE FROM QNA q
+		WHERE QNA_DATE BETWEEN TO_DATE(#{mindate}, 'YYYY-MM-DD') 
+                   AND TO_DATE(#{maxdate}, 'YYYY-MM-DD')
+        AND  QNA_CONTENT LIKE '%'|| #{searchValue} || '%'
+        AND  REPLYSTATE = '처리중'
+	</select>
+	
+	
+	<select id="getProductByName" parameterType="hashmap" resultType="admin.ProductResultVO">
+		SELECT PRODUCT_ID ,PRODUCT_NAME ,PRODUCT_PRICE ,PRODUCT_DATE,CATEGORY
+		FROM PRODUCTS p WHERE PRODUCT_NAME LIKE '%'|| #{searchValue} ||'%'
+		AND category = #{category}
+		AND product_date  BETWEEN TO_DATE(#{mindate}, 'YYYY-MM-DD') 
+                   		AND TO_DATE(#{maxdate}, 'YYYY-MM-DD')
+	</select>
+	
+	<select id="getProductById" parameterType="hashmap" resultType="admin.ProductResultVO">
+		SELECT PRODUCT_ID ,PRODUCT_NAME ,PRODUCT_PRICE ,PRODUCT_DATE,CATEGORY
+		FROM PRODUCTS p WHERE PRODUCT_ID = #{searchValue}
+		AND category = #{category}
+		AND product_date  BETWEEN TO_DATE(#{mindate}, 'YYYY-MM-DD') 
+                   		  AND TO_DATE(#{maxdate}, 'YYYY-MM-DD')
+	</select>
+	
+	<select id="getUserListByName" parameterType="hashmap" resultType="admin.UserResultVO">
+		SELECT  USER_NAME ,USER_ID ,USER_JOINDATE ,USER_PHONENUM ,USER_ADDR ,USER_EMAIL 
+		FROM USERS u 
+		WHERE USER_NAME LIKE '%'|| #{searchValue} || '%'
+		AND USER_JOINDATE  BETWEEN TO_DATE(#{mindate}, 'YYYY-MM-DD') 
+		                   AND TO_DATE(#{maxdate}, 'YYYY-MM-DD')
+	</select>
+	
+	<select id="getUserListById" parameterType="hashmap" resultType="admin.UserResultVO">
+		SELECT  USER_NAME ,USER_ID ,USER_JOINDATE ,USER_PHONENUM ,USER_ADDR ,USER_EMAIL 
+		FROM USERS u 
+		WHERE USER_ID LIKE '%'|| #{searchValue} || '%'
+		AND USER_JOINDATE  BETWEEN TO_DATE(#{mindate}, 'YYYY-MM-DD') 
+		                   AND TO_DATE(#{maxdate}, 'YYYY-MM-DD')
+	</select>
+	
+	<select id="getUserListByEmail" parameterType="hashmap" resultType="admin.UserResultVO">
+		SELECT  USER_NAME ,USER_ID ,USER_JOINDATE ,USER_PHONENUM ,USER_ADDR ,USER_EMAIL 
+		FROM USERS u 
+		WHERE USER_EMAIL LIKE '%'|| #{searchValue} || '%'
+		AND USER_JOINDATE  BETWEEN TO_DATE(#{mindate}, 'YYYY-MM-DD') 
+		                   AND TO_DATE(#{maxdate}, 'YYYY-MM-DD')
+	</select>
+	
+	<select id="getUserListByPhone" parameterType="hashmap" resultType="admin.UserResultVO">
+		SELECT  USER_NAME ,USER_ID ,USER_JOINDATE ,USER_PHONENUM ,USER_ADDR ,USER_EMAIL 
+		FROM USERS u 
+		WHERE USER_PHONENUM LIKE '%'|| #{searchValue} || '%'
+		AND USER_JOINDATE  BETWEEN TO_DATE(#{mindate}, 'YYYY-MM-DD') 
+		                   AND TO_DATE(#{maxdate}, 'YYYY-MM-DD')
+	</select>
+	
+	<insert parameterType="admin.ProductVO" id="insertProduct">
+		INSERT INTO PRODUCTS values (product_seq.nextval,#{product_name},#{product_price},1,#{product_imgpath},#{product_detail},1,#{category},sysdate) 
+	</insert>
+	
+	<delete id="deleteProduct" parameterType="_int">
+		DELETE FROM PRODUCTS p WHERE PRODUCT_ID = #{product_id}
+	</delete>
+	
+	<update id="updateProduct" parameterType="hashmap">
+		UPDATE PRODUCTS SET PRODUCT_NAME  = #{product_name}, PRODUCT_PRICE = #{product_price},
+		PRODUCT_IMGPATH = #{product_imgpath}, PRODUCT_DETAIL = #{product_detail}, CATEGORY = #{category}
+		WHERE PRODUCT_ID = #{product_id}
+	</update>
+	
+	<select id="adminLogin" parameterType="hashmap" resultType="admin.AdminVO">
+		SELECT * FROM MANAGER WHERE MANAGER_ID = #{id} AND MG_PASSWORD = #{pw}
+	</select>	
+	
+	<update id="updateProfile" parameterType="hashmap">
+		UPDATE MANAGER SET MG_NAME  = #{mg_name}, MG_IMGPATH = #{mg_imgpath}
+		WHERE MANAGER_ID = #{manager_id}
+	</update>
+	
+	<insert id="adminInsert" parameterType="hashmap">
+		INSERT INTO MANAGER VALUES(#{manager_id},#{mg_pw},'default','images/admin/default.png','N')
+	</insert>
+	
+	<select id="getAdminList" resultType="admin.AdminVO">
+		SELECT * FROM MANAGER WHERE AUTHORITY = 'N'
+	</select>
+	
+	<delete id="adminDelete" parameterType="string">
+		DELETE FROM MANAGER WHERE MANAGER_ID = #{manager_id}
+	</delete>
+	
+	<insert id="noticeInsert" parameterType="hashmap">
+		INSERT INTO NOTICE VALUES(notice_seq.nextval,#{title},#{content},sysdate,#{manager_id})
+	</insert>
+	
+	<delete id="postDelete1" parameterType="_int">
+		DELETE FROM PRODUCTS_Q WHERE QUESTION_ID = #{id} 
+	</delete>
+	
+	<delete id="postDelete2" parameterType="_int">
+		DELETE FROM REVIEWS WHERE REVIEW_ID = #{id} 
+	</delete>
+	
+	<delete id="postDelete3" parameterType="_int">
+		DELETE FROM QNA WHERE QNA_ID = #{id} 
+	</delete>
+	
+	<insert id="insertReply1" parameterType="hashmap">
+		INSERT INTO PQ_REPLY VALUES(pqreply_seq.nextval,#{title},#{contents},sysdate,#{manager_id},#{id})
+	</insert>
+	
+	<insert id="insertReply2" parameterType="hashmap">
+		INSERT INTO QNA_REPLY VALUES(qnareply_seq.nextval,#{title},#{contents},sysdate,#{manager_id},#{id})
+	</insert>
+	
+	<update id="updateState1" parameterType="_int">
+		UPDATE PRODUCTS_Q SET REPLYSTATE = '완료됨' WHERE QUESTION_ID = #{id}
+	</update>
+	
+	<update id="updateState2" parameterType="_int">
+		UPDATE QNA SET REPLYSTATE = '완료됨' WHERE QNA_ID = #{id}
+	</update>
+</mapper>
